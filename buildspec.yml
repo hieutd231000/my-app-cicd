@@ -4,19 +4,19 @@ env:
     APP_TOKEN: /myapp/dev/token
 phases:
   install:
-    runtime-versions: 
+    runtime-versions:
       nodejs: 20
   pre_build:
     commands:
-      - echo "Token length is ${#APP_TOKEN}"   # In độ dài, KHÔNG in giá trị thực
+      - echo "Token length is ${#APP_TOKEN}"
   build:
     commands:
-      - npm ci
-      - npm run build
+      - mkdir -p dist
+      - cp src/index.html dist/
 artifacts:
-  files: 
+  files:
     - '**/*'
   base-directory: dist
 cache:
-  paths: 
+  paths:
     - 'node_modules/**/*'
